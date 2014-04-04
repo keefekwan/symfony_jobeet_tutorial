@@ -1,0 +1,30 @@
+{% extends 'KKJobeetBundle::layout.html.twig' %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" href="{{ asset('bundles/kkjobeet/css/jobs.css') }}" type="text/css" media="all" />
+{% endblock %}
+
+{% block content %}
+    <div id="jobs">
+        {% for category in categories %}
+            <div>
+                <div class="category">
+                    <div class="feed">
+                        <a href="{{ path('KKJobeetBundle_category', { 'slug': category.slug, '_format': 'atom' }) }}">Feed</a>
+                    </div>
+                    <h1><a href="{{ path('KKJobeetBundle_category', { 'slug': category.slug }) }}">{{ category.name }}</a></h1>
+                </div>
+
+                {{ include ('KKJobeetBundle:Job:list.html.twig', { 'jobs': category.activejobs }) }}
+
+                {% if category.morejobs %}
+                    <div class="more_jobs">
+                        and <a href="{{ path('KKJobeetBundle_category', { 'slug': category.slug }) }}">{{ category.morejobs }}</a>
+                        more...
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+kk_affiliate_new:
+    path: /new
+    defaults: { _controller: "KKJobeetBundle:Affiliate:new" }
+
+kk_affiliate_create:
+    path: /create
+    defaults: { _controller: "KKJobeetBundle:Affiliate:create" }
+    requirements: { _method: post }
+
+kk_affiliate_wait:
+    path: /wait
+    defaults: { _controller: "KKJobeetBundle:Affiliate:wait" }

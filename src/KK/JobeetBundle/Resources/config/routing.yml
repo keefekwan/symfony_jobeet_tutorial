@@ -1,0 +1,31 @@
+login:
+    path:  /login
+    defaults: { _controller: KKJobeetBundle:Default:login }
+
+login_check:
+    path:  /login_check
+
+logout:
+    path:  /logout
+
+KKJobeetBundle_homepage:
+    path:  /
+    defaults: { _controller: KKJobeetBundle:Job:index }
+
+KKJobeetBundle_kk_job:
+    resource: "@KKJobeetBundle/Resources/config/routing/job.yml"
+    prefix:   /job
+
+KKJobeetBundle_category:
+    path: /category/{slug}/{page}
+    defaults: { _controller: KKJobeetBundle:Category:show, page: 1 }
+
+KKJobeetBundle_api:
+    path: /api/{token}/jobs.{_format}
+    defaults: { _controller: "KKJobeetBundle:Api:list" }
+    requirements:
+        _format: xml|json|yaml
+
+KKJobeetBundle_kk_affiliate:
+    resource: "@KKJobeetBundle/Resources/config/routing/affiliate.yml"
+    prefix:   /affiliate

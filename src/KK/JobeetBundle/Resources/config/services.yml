@@ -1,0 +1,30 @@
+parameters:
+#    kk_jobeet.example.class: KK\JobeetBundle\Example
+
+services:
+    kk.jobeet.admin.category:
+        class: KK\JobeetBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Categories }
+        arguments:
+            - ~
+            - KK\JobeetBundle\Entity\Category
+            - 'KKJobeetBundle:CategoryAdmin'
+
+    kk.jobeet.admin.job:
+        class: KK\JobeetBundle\Admin\JobAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Jobs }
+        arguments:
+            - ~
+            - KK\JobeetBundle\Entity\Job
+            - 'KKJobeetBundle:JobAdmin'
+
+    kk.jobeet.admin.affiliate:
+        class: KK\JobeetBundle\Admin\AffiliateAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Affiliates }
+        arguments:
+            - ~
+            - KK\JobeetBundle\Entity\Affiliate
+            - 'KKJobeetBundle:AffiliateAdmin'
